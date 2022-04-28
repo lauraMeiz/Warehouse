@@ -4,11 +4,14 @@ import rand from "./Common/rand";
 import Create from "./Components/Create";
 import Edit from "./Components/Edit";
 import Read from "./Components/Read";
+import View from "./Components/View";
+import ViewOne from "./Components/ViewOne";
 import "./Crud.scss";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [modal, setModal] = useState(0);
+  const [view, setView] = useState("");
 
   useEffect(() => {
     let data = localStorage.getItem("products");
@@ -27,7 +30,12 @@ function App() {
   const show = (id) => {
     setModal(id);
   };
-
+  const getView = (id) => {
+    setView(id);
+    console.log(products.id);
+    // products.filter((f) => console.log(f.id));
+    // setView(view);
+  };
   const getProduct = () => {
     return products.filter((p) => p.id === modal)[0];
   };
@@ -49,23 +57,6 @@ function App() {
 
     setProducts((products) => [...products, product]);
   };
-  // const sortKilometres = () => {
-  //   const productsC = [...products];
-  //   productsC.sort((a, b) => b.totalRideKilometres - a.totalRideKilometres);
-
-  //   setproducts(productsC);
-  // };
-
-  // const sortDate = () => {
-  //   const productsCO = [...products];
-
-  //   productsCopy.sort(
-  //     (a, b) => new Date(b.lastUseTime) - new Date(a.lastUseTime)
-  //   );
-
-  //   setProducts(productsCopy);
-  //   console.log(productsCopy);
-  // };
 
   const edit = (data) => {
     //LocalStorage logic
@@ -96,12 +87,16 @@ function App() {
 
   return (
     <div className="app">
+      <header>Flower warehouse</header>
       <div>
+        <ViewOne getView={getView} products={products}></ViewOne>
         <Create create={create}></Create>
         <Read deleteA={deleteA} products={products} show={show}></Read>
         {modal ? (
           <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
         ) : null}
+
+        {/* <View getView={getView}></View> */}
       </div>
     </div>
   );

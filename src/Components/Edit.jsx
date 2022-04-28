@@ -10,7 +10,6 @@ function Edit({ edit, product, cancel, products }) {
   const [isActive, setIsActive] = useState(0);
   useEffect(() => {
     setName(products.name);
-
     setEAN(products.EAN);
     setType(products.type);
     setColor(products.color);
@@ -104,12 +103,15 @@ function Edit({ edit, product, cancel, products }) {
                 value={weight}
                 onChange={(e) => handleInput(e, "weight")}
               />
-              grames
             </div>
 
-            <div className="input btn">
-              <button onClick={handleEdit}>Register</button>
-              <button onClick={handleCancel}>Cancel</button>
+            <div className="buttons">
+              <button className="editB" onClick={handleEdit}>
+                Save
+              </button>
+              <button className="delete" onClick={handleCancel}>
+                Cancel
+              </button>
             </div>
           </div>
         </div>

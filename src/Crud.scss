@@ -5,8 +5,65 @@
   //   flex-direction: column;
   //   align-items: center;
   //   justify-content: center;
-
+  header {
+    height: 50px;
+    width: 1200px;
+    text-align: center;
+    margin: 0 calc(50% - 600px);
+    padding-top: 60px;
+    font-size: 30px;
+    font-weight: bolder;
+    font-style: italic;
+    color: rgb(74, 74, 112);
+  }
   color: white;
+  .productTitle {
+    color: white;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    width: 1030px;
+    margin: 30px calc(50% - 560px);
+    font-weight: bolder;
+    padding: 10px;
+    border: 1px solid grey;
+    background-color: rgb(90, 93, 112);
+
+    li {
+      width: 150px;
+    }
+  }
+  button {
+    padding: 7px 10px;
+    margin: 1px 2px 2px 1px;
+    border-radius: 4px;
+    background-color: rgb(90, 90, 115);
+    color: white;
+  }
+
+  .delete {
+    background-color: #6a2125;
+    text-transform: uppercase;
+  }
+  .editB {
+    background-color: #0e4225;
+    text-transform: uppercase;
+  }
+  .register {
+    background-color: rgb(90, 90, 115);
+    text-transform: uppercase;
+    margin-top: 20px;
+    color: rgb(253, 251, 251);
+    font-weight: bolder;
+  }
+  .buttons {
+    display: flex;
+    // width: 300px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
 }
 .create,
 .edit {
@@ -15,11 +72,54 @@
   align-items: center;
   justify-content: center;
 }
+.create {
+  background-color: #f1f5f8;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 calc(50% - 200px);
+  border-radius: 4px;
+  color: rgb(74, 74, 112);
+  box-shadow: 2px 2px 5px grey;
+  input,
+  select {
+    height: 30px;
+    background-color: rgb(90, 93, 112);
+    color: white;
+    font-size: 20px;
+
+    line-height: 20px;
+  }
+}
 .edit {
   background-color: aliceblue;
-  padding: 50px;
+  padding: 50px 100px;
   color: black;
-  border: 1px solid blue;
+  border: 1px solid rgb(71, 71, 84);
+  box-shadow: 2px 5px 5px rgb(89, 87, 87);
+  h2 {
+    border: 1px solid rgb(41, 41, 79);
+    background-color: rgb(90, 93, 112);
+    color: white;
+    padding: 5px 120px;
+  }
+  input,
+  select {
+    height: 30px;
+    background-color: rgb(90, 93, 112);
+    color: white;
+    font-size: 20px;
+
+    line-height: 20px;
+  }
+
+  // input[type="checkbox"] {
+  //   margin: 30px;
+  // }
+
+  label {
+    margin: 15px;
+  }
 }
 .modal {
   position: absolute;
@@ -27,19 +127,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(113, 185, 244, 0.7);
+  background-color: rgba(103, 116, 126, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
 }
+
 .read {
   width: 1200px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin: 0 calc(50% - 600px);
-  border: 1px solid rgb(8, 61, 92);
+  margin: -20px calc(50% - 600px);
+  // border: 1px solid rgb(8, 61, 92);
   //   align-items: center;
   //   justify-content: center;
   .product {
@@ -48,14 +149,37 @@
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
-
-    // padding: 10px;
+    border-bottom: 1px solid grey;
+    padding: 10px;
     color: black;
+    .delete {
+      background-color: #8b4246;
+    }
+    .editB {
+      background-color: #216d43;
+      text-transform: uppercase;
+    }
+
+    .buttons {
+      display: flex;
+      // width: 300px;
+      flex-direction: row;
+    }
+
+    // button {
+    //   padding: 7px 10px;
+    //   margin: 2px 2px 1px;
+    //   border-radius: 4px;
+    //   background-color: rgb(90, 90, 115);
+    //   color: white;
+    // }
 
     li {
       list-style: none;
-      width: 200px;
+      width: 150px;
+      text-transform: capitalize;
     }
+
     .active {
       display: block;
       width: 20px;
@@ -82,6 +206,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   input[type="text"],
   select {
     width: 200px;

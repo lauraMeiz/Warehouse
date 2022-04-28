@@ -46,6 +46,9 @@ function Create({ create }) {
       case "weight":
         setWeight(e.target.value);
         break;
+      case "isActive":
+        setIsActive((i) => (i === 0 ? 1 : 0));
+        break;
       default:
     }
   };
@@ -90,11 +93,12 @@ function Create({ create }) {
               value={weight}
               onChange={(e) => handleInput(e, "weight")}
             />
-            grames
           </div>
 
           <div className="input btn">
-            <button onClick={handleCreate}>Register</button>
+            <button className="register" onClick={handleCreate}>
+              Register
+            </button>
           </div>
         </div>
       </div>
