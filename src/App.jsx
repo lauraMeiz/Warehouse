@@ -100,7 +100,7 @@ function App() {
         <Create create={create}></Create>
         <Read deleteA={deleteA} products={products} show={show}></Read>
         {modal ? (
-          <Edit edit={edit} animal={getProduct()} cancel={cancel}></Edit>
+          <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
         ) : null}
       </div>
     </div>

@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react";
 import getNewId from "../Common/id";
 
-function Edit({ edit, product, cancel }) {
+function Edit({ edit, product, cancel, products }) {
   const [name, setName] = useState("");
   const [EAN, setEAN] = useState();
   const [type, setType] = useState("");
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("");
   const [isActive, setIsActive] = useState(0);
-  //   useEffect(() => {
-  //     setName(product.name);
-  //     setEAN(product.EAN);
-  //     setType(product.type);
-  //     setColor(product.color);
-  //     setIsActive(0);
-  //     setWeight(product.weight);
-  //   }, [product]);
+  useEffect(() => {
+    setName(products.name);
+
+    setEAN(products.EAN);
+    setType(products.type);
+    setColor(products.color);
+    setIsActive(0);
+    setWeight(products.weight);
+  }, [products]);
   const handleCancel = () => {
     cancel();
   };
 
-  const handleEdit = () => {
+  const handleEdit = (e) => {
+    e.preventDefault();
     const data = {
       id: getNewId(),
       name: name,
