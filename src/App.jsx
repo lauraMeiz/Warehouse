@@ -11,7 +11,7 @@ import "./Crud.scss";
 function App() {
   const [products, setProducts] = useState([]);
   const [modal, setModal] = useState(0);
-  const [view, setView] = useState("");
+  const [view, setView] = useState(0);
 
   useEffect(() => {
     let data = localStorage.getItem("products");
@@ -25,20 +25,22 @@ function App() {
 
   const cancel = () => {
     setModal(0);
+    setView(0);
   };
 
   const show = (id) => {
     setModal(id);
   };
   const getView = (id) => {
-    setModal(id);
+    setView(id);
 
     console.log(products.id);
     // products.filter((f) => console.log(f.id));
     // setView(view);
   };
   const getProduct = () => {
-    return products.filter((p) => p.id === modal)[0];
+    const betkas = modal !== 0 ? modal : view;
+    return products.filter((p) => p.id === betkas)[0];
   };
 
   const create = (data) => {
@@ -97,16 +99,16 @@ function App() {
           getView={getView}
           show={show}
         ></Read>
-        {modal ? (
-          <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
-        ) : null}
 
-        {modal ? (
+        {view ? (
           <View
             getView={getView}
             products={getProduct()}
             cancel={cancel}
           ></View>
+        ) : null}
+        {modal ? (
+          <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
         ) : null}
       </div>
     </div>
