@@ -1,6 +1,6 @@
 import Product from "./Product";
 
-function Read({ products, deleteA, show }) {
+function Read({ products, deleteA, show, getView }) {
   return (
     <>
       <div className="productTitle">
@@ -22,6 +22,7 @@ function Read({ products, deleteA, show }) {
               product={product}
               deleteA={deleteA}
               show={show}
+              getView={getView}
             ></Product>
           ))}
         </ul>

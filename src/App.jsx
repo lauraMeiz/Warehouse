@@ -5,7 +5,7 @@ import Create from "./Components/Create";
 import Edit from "./Components/Edit";
 import Read from "./Components/Read";
 import View from "./Components/View";
-import ViewOne from "./Components/ViewOne";
+
 import "./Crud.scss";
 
 function App() {
@@ -31,7 +31,8 @@ function App() {
     setModal(id);
   };
   const getView = (id) => {
-    setView(id);
+    setModal(id);
+
     console.log(products.id);
     // products.filter((f) => console.log(f.id));
     // setView(view);
@@ -89,14 +90,24 @@ function App() {
     <div className="app">
       <header>Flower warehouse</header>
       <div>
-        <ViewOne getView={getView} products={products}></ViewOne>
         <Create create={create}></Create>
-        <Read deleteA={deleteA} products={products} show={show}></Read>
+        <Read
+          deleteA={deleteA}
+          products={products}
+          getView={getView}
+          show={show}
+        ></Read>
         {modal ? (
           <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
         ) : null}
 
-        {/* <View getView={getView}></View> */}
+        {modal ? (
+          <View
+            getView={getView}
+            products={getProduct()}
+            cancel={cancel}
+          ></View>
+        ) : null}
       </div>
     </div>
   );

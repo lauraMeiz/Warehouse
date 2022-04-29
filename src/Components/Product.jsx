@@ -10,9 +10,10 @@ function Product({
   const handleDelete = (id) => {
     deleteA(parseInt(id));
   };
-  const handleView = (id) => {
-    getView(parseInt(id));
-  };
+
+  // const handleView = (id) => {
+  //   getView(parseInt(id));
+  // };
   return (
     <>
       <div className="product">
@@ -31,7 +32,7 @@ function Product({
           onChange={(e) => handleInput(e, "isActive")}
         />
         <div className="buttons">
-          <button onClick={(id) => handleView(product.id)} className="view">
+          <button onClick={(id) => getView(product.id)} className="view">
             VIEW
           </button>
 
