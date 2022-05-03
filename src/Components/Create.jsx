@@ -62,6 +62,7 @@ function Create({ create }) {
             <input
               type="text"
               value={EAN}
+              placeholder="Enter new EAN"
               onChange={(e) => handleInput(e, "EAN")}
             ></input>
             <label>Name</label>

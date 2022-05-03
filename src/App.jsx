@@ -5,7 +5,7 @@ import Create from "./Components/Create";
 import Edit from "./Components/Edit";
 import Read from "./Components/Read";
 import View from "./Components/View";
-
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./Crud.scss";
 
 function App() {
@@ -91,26 +91,79 @@ function App() {
   return (
     <div className="app">
       <header>Flower warehouse</header>
-      <div>
-        <Create create={create}></Create>
-        <Read
-          deleteA={deleteA}
-          products={products}
-          getView={getView}
-          show={show}
-        ></Read>
+      <BrowserRouter>
+        <div>
+          <div className="list">
+            <Link
+              style={{
+                textDecoration: "none",
+                padding: "10px",
+                backgroundColor: "rgb(90, 90, 115)",
+                color: "white",
+                marginRight: "20px",
+              }}
+              to="/registration"
+            >
+              Registration
+            </Link>
+            <Link
+              style={{
+                textDecoration: "none",
+                padding: "10px",
+                backgroundColor: "rgb(90, 90, 115)",
+                color: "white",
+                width: "100px",
+                textAlign: "center",
+              }}
+              to="/list"
+            >
+              List
+            </Link>
+          </div>
+          <Routes>
+            {/* <Route path="/" element={<Create create={create}></Create>}></Route> */}
+            <Route
+              path="/registration"
+              element={<Create create={create}></Create>}
+            ></Route>
 
-        {view ? (
-          <View
+            <Route
+              path="/list"
+              element={
+                <Read
+                  deleteA={deleteA}
+                  products={products}
+                  getView={getView}
+                  show={show}
+                ></Read>
+              }
+            ></Route>
+            {/* <Create create={create}></Create>
+            <Read
+              deleteA={deleteA}
+              products={products}
+              getView={getView}
+              show={show}
+            ></Read> */}
+          </Routes>
+          {/* <Read
+            deleteA={deleteA}
+            products={products}
             getView={getView}
-            products={getProduct()}
-            cancel={cancel}
-          ></View>
-        ) : null}
-        {modal ? (
-          <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
-        ) : null}
-      </div>
+            show={show}
+          ></Read> */}
+          {view ? (
+            <View
+              getView={getView}
+              products={getProduct()}
+              cancel={cancel}
+            ></View>
+          ) : null}
+          {modal ? (
+            <Edit edit={edit} products={getProduct()} cancel={cancel}></Edit>
+          ) : null}
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

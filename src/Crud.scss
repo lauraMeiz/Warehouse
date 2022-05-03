@@ -72,6 +72,17 @@
     color: rgb(253, 251, 251);
     font-weight: bolder;
   }
+  .list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    text-decoration: none;
+  }
+  Link {
+    text-decoration: none;
+  }
   .buttons {
     display: flex;
     width: 300px;
