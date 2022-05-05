@@ -10,6 +10,8 @@ function Read({ products, deleteA, show, getView }) {
         <li>Type</li>
         <li>Color</li>
         <li>Weight</li>
+        <li>Price</li>
+        {/* <li>Quantity</li> */}
         <li>Active</li>
         {/* <div className="active"></div> */}
       </div>

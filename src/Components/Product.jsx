@@ -28,6 +28,8 @@ function Product({
         <li>{product.type}</li>
         <li>{product.color}</li>
         <li>{product.weight}</li>
+        <li>{product.price}</li>
+        {/* <li>{product.quantity}</li> */}
         <input
           style={{ width: "50px" }}
           type="checkbox"

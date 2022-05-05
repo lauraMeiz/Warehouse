@@ -6,6 +6,7 @@ import Edit from "./Components/Edit";
 import Read from "./Components/Read";
 import View from "./Components/View";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+
 import "./Crud.scss";
 
 function App() {
@@ -35,12 +36,11 @@ function App() {
     setView(id);
 
     console.log(products.id);
-    // products.filter((f) => console.log(f.id));
-    // setView(view);
   };
+
   const getProduct = () => {
-    const betkas = modal !== 0 ? modal : view;
-    return products.filter((p) => p.id === betkas)[0];
+    const pro = modal !== 0 ? modal : view;
+    return products.filter((p) => p.id === pro)[0];
   };
 
   const create = (data) => {
@@ -52,6 +52,8 @@ function App() {
       weight: data.weight,
       color: data.color,
       isActive: data.isActive,
+      price: data.price,
+      // quantity: data.quantity,
     };
     // localStorage logic
     const newData = [...products, product];
@@ -72,6 +74,9 @@ function App() {
         productsCopy[i].EAN = data.EAN;
         productsCopy[i].color = data.color;
         productsCopy[i].isActive = data.isActive;
+        productsCopy[i].weight = data.weight;
+        productsCopy[i].price = data.price;
+        // productsCopy[i].quantity = data.quantity;
       }
     });
     localStorage.setItem("products", JSON.stringify(productsCopy));
@@ -121,7 +126,6 @@ function App() {
             </Link>
           </div>
           <Routes>
-            {/* <Route path="/" element={<Create create={create}></Create>}></Route> */}
             <Route
               path="/registration"
               element={<Create create={create}></Create>}
@@ -138,20 +142,8 @@ function App() {
                 ></Read>
               }
             ></Route>
-            {/* <Create create={create}></Create>
-            <Read
-              deleteA={deleteA}
-              products={products}
-              getView={getView}
-              show={show}
-            ></Read> */}
           </Routes>
-          {/* <Read
-            deleteA={deleteA}
-            products={products}
-            getView={getView}
-            show={show}
-          ></Read> */}
+
           {view ? (
             <View
               getView={getView}

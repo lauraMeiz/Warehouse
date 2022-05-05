@@ -8,6 +8,8 @@ function Edit({ edit, product, cancel, products }) {
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("");
   const [isActive, setIsActive] = useState(0);
+  const [price, setPrice] = useState([]);
+  // const [quantity, setQuantity] = useState([]);
   useEffect(() => {
     setName(products.name);
     setEAN(products.EAN);
@@ -15,6 +17,8 @@ function Edit({ edit, product, cancel, products }) {
     setColor(products.color);
     setIsActive(0);
     setWeight(products.weight);
+    setPrice(products.price);
+    // setQuantity(products.quantity);
   }, [products]);
   const handleCancel = () => {
     cancel();
@@ -30,6 +34,8 @@ function Edit({ edit, product, cancel, products }) {
       weight: weight,
       color: color,
       isActive: isActive,
+      price: price,
+      // quantity: quantity,
     };
 
     edit(data);
@@ -39,6 +45,8 @@ function Edit({ edit, product, cancel, products }) {
     setColor("");
     setIsActive(0);
     setWeight("");
+    setPrice([]);
+    // setQuantity([]);
   };
 
   const handleInput = (e, d) => {
@@ -58,6 +66,12 @@ function Edit({ edit, product, cancel, products }) {
       case "weight":
         setWeight(e.target.value);
         break;
+      case "price":
+        setPrice(e.target.value);
+        break;
+      // case "quantity":
+      //   setQuantity(e.target.value);
+      //   break;
       default:
     }
   };
@@ -103,6 +117,18 @@ function Edit({ edit, product, cancel, products }) {
                 value={weight}
                 onChange={(e) => handleInput(e, "weight")}
               />
+              <label> Price</label>
+              <input
+                type="text"
+                value={price}
+                onChange={(e) => handleInput(e, "price")}
+              />
+              {/* <label>Quantity</label>
+              <input
+                type="text"
+                value={quantity}
+                onChange={(e) => handleInput(e, "quantity")}
+              /> */}
             </div>
 
             <div className="buttons">

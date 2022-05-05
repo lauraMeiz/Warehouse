@@ -8,6 +8,8 @@ function Create({ create }) {
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("");
   const [isActive, setIsActive] = useState(0);
+  const [price, setPrice] = useState([]);
+  // const [quantity, setQuantity] = useState([]);
 
   const handleCreate = () => {
     const data = {
@@ -18,6 +20,8 @@ function Create({ create }) {
       weight: weight,
       color: color,
       isActive: isActive,
+      price: price,
+      // quantity: quantity,
     };
 
     create(data);
@@ -27,6 +31,8 @@ function Create({ create }) {
     setColor("");
     setIsActive(0);
     setWeight("");
+    setPrice([]);
+    // setQuantity([]);
   };
 
   const handleInput = (e, d) => {
@@ -49,6 +55,12 @@ function Create({ create }) {
       case "isActive":
         setIsActive((i) => (i === 0 ? 1 : 0));
         break;
+      case "price":
+        setPrice(e.target.value);
+        break;
+      // case "quantity":
+      //   setQuantity(e.target.value);
+      //   break;
       default:
     }
   };
@@ -94,6 +106,19 @@ function Create({ create }) {
               value={weight}
               onChange={(e) => handleInput(e, "weight")}
             />
+            <label>Price</label>
+            <input
+              type="text"
+              value={price}
+              onChange={(e) => handleInput(e, "price")}
+            />
+
+            {/* <label>Quantity</label>
+            <input
+              type="text"
+              value={quantity}
+              onChange={(e) => handleInput(e, "quantity")}
+            /> */}
           </div>
 
           <div className="input btn">

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import tulpe from "../img/tulip.jpg";
 import rose from "../img/rose.jpg";
 import snapdragon from "../img/snapdragon.jpg";
@@ -6,27 +5,50 @@ import chrysanthemum from "../img/chrysanthemum.jpg";
 import geranium from "../img/geranium.jpg";
 import sunflower from "../img/sunflower.jpg";
 import petunia from "../img/petunia.jpg";
-
-// import getNewId from "../Common/id";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 
 function View({ cancel, products, product }) {
-  // const [name, setName] = useState("");
-  // const [EAN, setEAN] = useState();
-  // const [type, setType] = useState("");
-  // const [weight, setWeight] = useState("");
-  // const [color, setColor] = useState("");
-  // const [isActive, setIsActive] = useState(0);
-  console.log(products);
-  // useEffect(() => {
-  //   setName(products.name);
-  //   setEAN(products.EAN);
-  //   setType(products.type);
-  //   setColor(products.color);
-  //   setIsActive(0);
-  //   setWeight(products.weight);
-  // }, [products]);
   const handleCancel = () => {
     cancel();
+  };
+  const getPrice = () => {
+    let data = JSON.parse(localStorage.getItem("products"));
+    const arr = [];
+
+    for (let i = 0; data.length < 5; i++) {
+      const k = parseInt(data[i].price);
+
+      arr.push(k);
+      console.log("price", arr);
+    }
+    return arr;
+  };
+  getPrice();
+  // const getQuantity = () => {
+  //   const arr1 = [];
+  //   let data2 = JSON.parse(localStorage.getItem("products"));
+
+  //   for (let i = 0; i < 5; i++) {
+  //     const k = parseInt(data2[i].quantity);
+
+  //     arr1.push(k);
+  //     console.log("quantity", arr1);
+  //   }
+  //   return arr1;
+  // };
+
+  const options = {
+    series: [
+      {
+        name: "Price",
+        data: getPrice(),
+      },
+      {
+        name: "Quantity",
+        data: [1, 2, 3, 4],
+      },
+    ],
   };
 
   return (
@@ -96,6 +118,12 @@ function View({ cancel, products, product }) {
                 <button className="viewB" onClick={handleCancel}>
                   Cancel
                 </button>
+                <div style={{ width: "100%" }}>
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={options}
+                  ></HighchartsReact>
+                </div>
               </div>
             </div>
           </div>
