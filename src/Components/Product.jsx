@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Product({
   product,
   products,
@@ -7,13 +9,16 @@ function Product({
   handleInput,
   getView,
 }) {
+  const [check, setCheck] = useState(0);
   const handleDelete = (id) => {
     deleteA(parseInt(id));
   };
 
-  // const handleView = (id) => {
-  //   getView(parseInt(id));
-  // };
+  const checked = () => {
+    setCheck((i) => (i === 0 ? 1 : 0));
+    console.log(check);
+  };
+
   return (
     <>
       <div className="product">
@@ -23,25 +28,34 @@ function Product({
         <li>{product.type}</li>
         <li>{product.color}</li>
         <li>{product.weight}</li>
-        {/* <div className="active"></div> */}
-        {/* <label>Active</label> */}
         <input
           style={{ width: "50px" }}
           type="checkbox"
-          checked={isActive}
-          onChange={(e) => handleInput(e, "isActive")}
+          checked={check}
+          onChange={() => checked()}
         />
         <div className="buttons">
-          <button onClick={(id) => getView(product.id)} className="view">
-            VIEW
-          </button>
-
-          <button className="delete" onClick={() => handleDelete(product.id)}>
-            DELETE
-          </button>
-          <button className="editB" onClick={(id) => show(product.id)}>
-            EDIT
-          </button>
+          {check ? (
+            <button onClick={(id) => getView(product.id)} className="view">
+              VIEW
+            </button>
+          ) : (
+            <button className="view">VIEW</button>
+          )}
+          {check ? (
+            <button className="delete" onClick={() => handleDelete(product.id)}>
+              DELETE
+            </button>
+          ) : (
+            <button className="delete">DELETE</button>
+          )}
+          {check ? (
+            <button className="editB" onClick={(id) => show(product.id)}>
+              EDIT
+            </button>
+          ) : (
+            <button className="editB">EDIT</button>
+          )}
         </div>
       </div>
     </>
