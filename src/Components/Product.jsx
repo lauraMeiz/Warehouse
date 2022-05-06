@@ -24,12 +24,12 @@ function Product({
       <div className="product">
         {" "}
         <li>{product.EAN}</li>
-        <li>{product.name}</li>
+        <li style={{ fontWeight: "bold" }}>{product.name}</li>
         <li>{product.type}</li>
         <li>{product.color}</li>
         <li>{product.weight}</li>
         <li>{product.price}</li>
-        {/* <li>{product.quantity}</li> */}
+        <li>{product.quantity}</li>
         <input
           style={{ width: "50px" }}
           type="checkbox"

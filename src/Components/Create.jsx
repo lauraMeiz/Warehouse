@@ -3,13 +3,13 @@ import getNewId from "../Common/id";
 
 function Create({ create }) {
   const [name, setName] = useState("");
-  const [EAN, setEAN] = useState();
+  const [EAN, setEAN] = useState("");
   const [type, setType] = useState("");
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("");
   const [isActive, setIsActive] = useState(0);
   const [price, setPrice] = useState([]);
-  // const [quantity, setQuantity] = useState([]);
+  const [quantity, setQuantity] = useState([]);
 
   const handleCreate = () => {
     const data = {
@@ -21,7 +21,7 @@ function Create({ create }) {
       color: color,
       isActive: isActive,
       price: price,
-      // quantity: quantity,
+      quantity: quantity,
     };
 
     create(data);
@@ -32,7 +32,7 @@ function Create({ create }) {
     setIsActive(0);
     setWeight("");
     setPrice([]);
-    // setQuantity([]);
+    setQuantity([]);
   };
 
   const handleInput = (e, d) => {
@@ -58,9 +58,9 @@ function Create({ create }) {
       case "price":
         setPrice(e.target.value);
         break;
-      // case "quantity":
-      //   setQuantity(e.target.value);
-      //   break;
+      case "quantity":
+        setQuantity(e.target.value);
+        break;
       default:
     }
   };
@@ -113,12 +113,12 @@ function Create({ create }) {
               onChange={(e) => handleInput(e, "price")}
             />
 
-            {/* <label>Quantity</label>
+            <label>Quantity</label>
             <input
               type="text"
               value={quantity}
               onChange={(e) => handleInput(e, "quantity")}
-            /> */}
+            />
           </div>
 
           <div className="input btn">

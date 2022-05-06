@@ -26,21 +26,25 @@ function View({ cancel, products, product }) {
     console.log(arr);
     return arr;
   };
+  const getQuantity = () => {
+    let data = JSON.parse(localStorage.getItem("products"));
+    const arr = [];
 
-  // const getQuantity = () => {
-  //   const arr1 = [];
-  //   let data2 = JSON.parse(localStorage.getItem("products"));
-
-  //   for (let i = 0; i < 5; i++) {
-  //     const k = parseInt(data2[i].quantity);
-
-  //     arr1.push(k);
-  //     console.log("quantity", arr1);
-  //   }
-  //   return arr1;
-  // };
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].name === products.name) {
+        const k = parseInt(data[i].quantity);
+        console.log(k);
+        arr.push(k);
+      }
+    }
+    console.log(arr);
+    return arr;
+  };
 
   const options = {
+    title: {
+      text: "Price, Quantity",
+    },
     series: [
       {
         name: "Price",
@@ -48,7 +52,7 @@ function View({ cancel, products, product }) {
       },
       {
         name: "Quantity",
-        data: [1, 2, 3, 4],
+        data: getQuantity(),
       },
     ],
   };
@@ -115,17 +119,16 @@ function View({ cancel, products, product }) {
                   </span>{" "}
                 </div>
               )}
-
+              <div className="graf" style={{ width: "100%" }}>
+                <HighchartsReact
+                  highcharts={Highcharts}
+                  options={options}
+                ></HighchartsReact>
+              </div>
               <div className="buttons">
                 <button className="viewB" onClick={handleCancel}>
                   Cancel
                 </button>
-                <div style={{ width: "100%" }}>
-                  <HighchartsReact
-                    highcharts={Highcharts}
-                    options={options}
-                  ></HighchartsReact>
-                </div>
               </div>
             </div>
           </div>

@@ -45,13 +45,13 @@ function App() {
     const product = {
       id: getNewId(),
       name: data.name,
-      EAN: rand(4000000000000, 49999999999999),
+      EAN: rand(400000000000, 499999999999),
       type: data.type,
       weight: data.weight,
       color: data.color,
       isActive: data.isActive,
       price: data.price,
-      // quantity: data.quantity,
+      quantity: data.quantity,
     };
     // localStorage logic
     const newData = [...products, product];
@@ -74,7 +74,7 @@ function App() {
         productsCopy[i].isActive = data.isActive;
         productsCopy[i].weight = data.weight;
         productsCopy[i].price = data.price;
-        // productsCopy[i].quantity = data.quantity;
+        productsCopy[i].quantity = data.quantity;
       }
     });
     localStorage.setItem("products", JSON.stringify(productsCopy));
