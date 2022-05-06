@@ -34,8 +34,6 @@ function App() {
   };
   const getView = (id) => {
     setView(id);
-
-    console.log(products.id);
   };
 
   const getProduct = () => {

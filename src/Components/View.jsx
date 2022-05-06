@@ -16,15 +16,17 @@ function View({ cancel, products, product }) {
     let data = JSON.parse(localStorage.getItem("products"));
     const arr = [];
 
-    for (let i = 0; data.length < 5; i++) {
-      const k = parseInt(data[i].price);
-
-      arr.push(k);
-      console.log("price", arr);
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].name === products.name) {
+        const k = parseInt(data[i].price);
+        console.log(k);
+        arr.push(k);
+      }
     }
+    console.log(arr);
     return arr;
   };
-  getPrice();
+
   // const getQuantity = () => {
   //   const arr1 = [];
   //   let data2 = JSON.parse(localStorage.getItem("products"));
