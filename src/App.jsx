@@ -43,7 +43,7 @@ function App() {
 
   const create = (data) => {
     let priceHistory = [];
-
+    let quantityHistory = [];
     const product = {
       id: getNewId(),
       name: data.name,
@@ -55,6 +55,7 @@ function App() {
       price: data.price,
       quantity: data.quantity,
       priceHistory: [...priceHistory, data.price],
+      quantityHistory: [...quantityHistory, data.quantity],
     };
     // localStorage logic
     const newData = [...products, product];
@@ -81,6 +82,10 @@ function App() {
         productsCopy[i].priceHistory = [
           ...productsCopy[i].priceHistory,
           data.price,
+        ];
+        productsCopy[i].quantityHistory = [
+          ...productsCopy[i].quantityHistory,
+          data.quantity,
         ];
       }
     });

@@ -9,7 +9,6 @@ function Edit({ edit, product, cancel, products }) {
   const [color, setColor] = useState("");
   const [isActive, setIsActive] = useState(0);
   const [price, setPrice] = useState();
-  const [priceHistory, setPriceHistory] = useState([]);
   const [quantity, setQuantity] = useState([]);
   useEffect(() => {
     setName(products.name);
@@ -38,8 +37,7 @@ function Edit({ edit, product, cancel, products }) {
       price: price,
       quantity: quantity,
     };
-    // setPriceHistory((prev) => [...prev, price]);
-    // console.log(priceHistory);
+
     edit(data);
     setName("");
     setEAN("");
@@ -52,7 +50,6 @@ function Edit({ edit, product, cancel, products }) {
     setQuantity([]);
   };
 
-  // setPrice(priceHistory);
   const handleInput = (e, d) => {
     switch (d) {
       case "EAN":

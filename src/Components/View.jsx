@@ -25,25 +25,32 @@ function View({ cancel, products, product }) {
           arr.push(k);
         }
       }
+      console.log(arr);
+      return arr.length < 5 ? arr : arr.slice(-5);
+      //console.log(arr);
     }
-    console.log(arr);
-    return arr;
   };
+
   const getQuantity = () => {
     let data = JSON.parse(localStorage.getItem("products"));
+
     const arr = [];
 
     for (let i = 0; i < data.length; i++) {
       if (data[i].name === products.name) {
-        const k = parseInt(data[i].quantity);
-        console.log(k);
-        arr.push(k);
-      }
-    }
-    console.log(arr);
-    return arr;
-  };
+        for (let j = 0; j < data[i].quantityHistory.length; j++) {
+          const k = parseInt(data[i].quantityHistory[j]);
 
+          arr.push(k);
+        }
+        // return arr;
+      }
+      console.log(arr);
+      return arr.length < 5 ? arr : arr.slice(-5);
+    }
+    // console.log(arr);
+    // return arr;
+  };
   const options = {
     title: {
       text: "Price, Quantity",
