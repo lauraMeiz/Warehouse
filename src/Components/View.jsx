@@ -25,10 +25,9 @@ function View({ cancel, products, product }) {
           arr.push(k);
         }
       }
-      console.log(arr);
-      return arr.length < 5 ? arr : arr.slice(-5);
-      //console.log(arr);
     }
+    console.log(arr);
+    return arr.length < 5 ? arr : arr.slice(-5);
   };
 
   const getQuantity = () => {
@@ -37,7 +36,7 @@ function View({ cancel, products, product }) {
     const arr = [];
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].name === products.name) {
+      if (data[i].id === products.id) {
         for (let j = 0; j < data[i].quantityHistory.length; j++) {
           const k = parseInt(data[i].quantityHistory[j]);
 
@@ -45,11 +44,13 @@ function View({ cancel, products, product }) {
         }
         // return arr;
       }
-      console.log(arr);
-      return arr.length < 5 ? arr : arr.slice(-5);
+      // console.log(arr);
+      // return arr.length < 5 ? arr : arr.slice(-5);
     }
     // console.log(arr);
     // return arr;
+    console.log(arr);
+    return arr.length < 5 ? arr : arr.slice(-5);
   };
   const options = {
     title: {
