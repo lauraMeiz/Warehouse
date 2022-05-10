@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import getNewId from "../Common/id";
 
 function Create({ create }) {
+  let navigate = useNavigate();
   const [name, setName] = useState("");
   const [EAN, setEAN] = useState("");
   const [type, setType] = useState("");
@@ -33,6 +35,7 @@ function Create({ create }) {
     setWeight("");
     setPrice([]);
     setQuantity([]);
+    navigate("/list");
   };
 
   const handleInput = (e, d) => {

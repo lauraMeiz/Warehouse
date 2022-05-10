@@ -42,6 +42,8 @@ function App() {
   };
 
   const create = (data) => {
+    let priceHistory = [];
+
     const product = {
       id: getNewId(),
       name: data.name,
@@ -52,6 +54,7 @@ function App() {
       isActive: data.isActive,
       price: data.price,
       quantity: data.quantity,
+      priceHistory: [...priceHistory, data.price],
     };
     // localStorage logic
     const newData = [...products, product];
@@ -75,6 +78,10 @@ function App() {
         productsCopy[i].weight = data.weight;
         productsCopy[i].price = data.price;
         productsCopy[i].quantity = data.quantity;
+        productsCopy[i].priceHistory = [
+          ...productsCopy[i].priceHistory,
+          data.price,
+        ];
       }
     });
     localStorage.setItem("products", JSON.stringify(productsCopy));
