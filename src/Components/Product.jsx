@@ -38,11 +38,11 @@ function Product({
         />
         <div className="buttons">
           {check ? (
-            <button onClick={(id) => getView(product.id)} className="view">
+            <button onClick={(id) => getView(product.id)} className="viewB">
               VIEW
             </button>
           ) : (
-            <button className="view">VIEW</button>
+            <button className="viewB">VIEW</button>
           )}
           {check ? (
             <button className="delete" onClick={() => handleDelete(product.id)}>

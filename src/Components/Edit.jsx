@@ -10,6 +10,8 @@ function Edit({ edit, product, cancel, products }) {
   const [isActive, setIsActive] = useState(0);
   const [price, setPrice] = useState();
   const [quantity, setQuantity] = useState([]);
+  const [date, setDate] = useState("");
+
   useEffect(() => {
     setName(products.name);
     setEAN(products.EAN);
@@ -19,6 +21,7 @@ function Edit({ edit, product, cancel, products }) {
     setWeight(products.weight);
     setPrice(products.price);
     setQuantity(products.quantity);
+    setDate(products.date);
   }, [products]);
   const handleCancel = () => {
     cancel();
@@ -36,8 +39,9 @@ function Edit({ edit, product, cancel, products }) {
       isActive: isActive,
       price: price,
       quantity: quantity,
+      date: new Date().toLocaleString(),
     };
-
+    // console.log(date);
     edit(data);
     setName("");
     setEAN("");
@@ -46,7 +50,7 @@ function Edit({ edit, product, cancel, products }) {
     setIsActive(0);
     setWeight("");
     setPrice([]);
-
+    setDate("");
     setQuantity([]);
   };
 

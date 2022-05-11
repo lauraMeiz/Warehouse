@@ -18,7 +18,7 @@ function View({ cancel, products, product }) {
     const arr = [];
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].name === products.name) {
+      if (data[i].name === products.name && data[i].color === products.color) {
         for (let j = 0; j < data[i].priceHistory.length; j++) {
           const k = parseInt(data[i].priceHistory[j]);
 
@@ -36,36 +36,85 @@ function View({ cancel, products, product }) {
     const arr = [];
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].id === products.id) {
+      if (data[i].name === products.name) {
         for (let j = 0; j < data[i].quantityHistory.length; j++) {
           const k = parseInt(data[i].quantityHistory[j]);
 
           arr.push(k);
         }
-        // return arr;
       }
-      // console.log(arr);
-      // return arr.length < 5 ? arr : arr.slice(-5);
     }
-    // console.log(arr);
-    // return arr;
+
     console.log(arr);
     return arr.length < 5 ? arr : arr.slice(-5);
   };
+
+  const getDate = () => {
+    let data = JSON.parse(localStorage.getItem("products"));
+    console.log(data);
+
+    const arr = [];
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].name === products.name) {
+        for (let j = 0; j < data[i].dateHistory.length; j++) {
+          const k = data[i].dateHistory[j];
+
+          arr.push(k);
+        }
+      }
+    }
+    console.log(arr);
+    return arr;
+  };
   const options = {
+    accessibility: {
+      enabled: false,
+    },
     title: {
-      text: "Price, Quantity",
+      text: "Price History",
     },
     series: [
       {
         name: "Price",
         data: getPrice(),
       },
+    ],
+    chart: {
+      style: {
+        height: 200,
+        type: "line",
+      },
+    },
+  };
+  const options2 = {
+    accessibility: {
+      enabled: false,
+    },
+    title: {
+      text: "Quantity History",
+    },
+
+    chart: {
+      style: {
+        height: 200,
+        type: "line",
+      },
+    },
+    series: [
       {
         name: "Quantity",
         data: getQuantity(),
       },
     ],
+
+    xAxis: {
+      categories: getDate(),
+    },
+    tooltip: {
+      headerFormat: "<b>{series.name}</b><br/>",
+      pointFormat: "{point.category}: {point.y}",
+    },
   };
 
   return (
@@ -73,6 +122,7 @@ function View({ cancel, products, product }) {
       <div className="modal">
         <div className="view">
           <h2>View</h2>
+
           <div className="form">
             <div className="input">
               {products.name === "tulips" && (
@@ -130,10 +180,14 @@ function View({ cancel, products, product }) {
                   </span>{" "}
                 </div>
               )}
-              <div className="graf" style={{ width: "100%" }}>
+              <div className="graf">
                 <HighchartsReact
                   highcharts={Highcharts}
                   options={options}
+                ></HighchartsReact>
+                <HighchartsReact
+                  highcharts={Highcharts}
+                  options={options2}
                 ></HighchartsReact>
               </div>
               <div className="buttons">
