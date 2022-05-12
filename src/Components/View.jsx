@@ -34,20 +34,20 @@ function View({ cancel, products, product }) {
   const getQuantity = () => {
     let data = JSON.parse(localStorage.getItem("products"));
 
-    const arr = [];
+    const arr2 = [];
 
     for (let i = 0; i < data.length; i++) {
       if (data[i].name === products.name) {
         for (let j = 0; j < data[i].quantityHistory.length; j++) {
           const k = parseInt(data[i].quantityHistory[j]);
 
-          arr.push(k);
+          arr2.push(k);
         }
       }
     }
 
-    console.log("quantity", arr);
-    return arr.length < 5 ? arr : arr.slice(-5);
+    console.log("quantity", arr2);
+    return arr2.length < 5 ? arr2 : arr2.slice(-5);
   };
 
   const getDate = () => {
@@ -83,7 +83,7 @@ function View({ cancel, products, product }) {
     ],
     chart: {
       style: {
-        height: 200,
+        height: 300,
         type: "line",
       },
     },
@@ -110,7 +110,7 @@ function View({ cancel, products, product }) {
     ],
     chart: {
       style: {
-        height: 200,
+        height: 300,
         type: "line",
       },
     },
