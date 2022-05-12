@@ -8,6 +8,7 @@ import View from "./Components/View";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import "./Crud.scss";
+import Home from "./Components/Home";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -143,8 +144,25 @@ function App() {
             >
               List
             </Link>
+
+            <Link
+              style={{
+                textDecoration: "none",
+                padding: "10px",
+                backgroundColor: "rgb(90, 90, 115)",
+                color: "white",
+                width: "100px",
+                textAlign: "center",
+                marginLeft: "20px",
+              }}
+              to="/"
+            >
+              HOME
+            </Link>
           </div>
           <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+
             <Route
               path="/registration"
               element={<Create create={create}></Create>}
