@@ -83,8 +83,10 @@ function View({ cancel, products, product }) {
     ],
     chart: {
       style: {
-        height: 300,
+        height: 250,
         type: "line",
+        fontSize: "20px",
+        fontWeight: "bold",
       },
     },
     xAxis: {
@@ -110,8 +112,10 @@ function View({ cancel, products, product }) {
     ],
     chart: {
       style: {
-        height: 300,
+        height: 250,
         type: "line",
+        fontSize: "20px",
+        fontWeight: "bold",
       },
     },
     xAxis: {
@@ -196,13 +200,13 @@ function View({ cancel, products, product }) {
               options={options2}
             ></HighchartsReact>
           </div>
-          <div className="buttons">
-            <button className="viewB" onClick={handleCancel}>
-              Cancel
-            </button>
-          </div>
+          {/* <div className="buttons"> */}
+          <button className="cancelB" onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       </div>
+      {/* </div> */}
       {/* </div>
       </div> */}
     </>

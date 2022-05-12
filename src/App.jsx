@@ -45,7 +45,7 @@ function App() {
     let priceHistory = [];
     let quantityHistory = [];
     let dateHistory = [];
-    let date = new Date();
+    let date = new Date().toLocaleString();
     const product = {
       id: getNewId(),
       name: data.name,
