@@ -12,13 +12,14 @@ function View({ cancel, products, product }) {
   const handleCancel = () => {
     cancel();
   };
+
   const getPrice = () => {
     let data = JSON.parse(localStorage.getItem("products"));
 
     const arr = [];
 
     for (let i = 0; i < data.length; i++) {
-      if (data[i].name === products.name && data[i].color === products.color) {
+      if (data[i].name === products.name) {
         for (let j = 0; j < data[i].priceHistory.length; j++) {
           const k = parseInt(data[i].priceHistory[j]);
 
@@ -26,7 +27,7 @@ function View({ cancel, products, product }) {
         }
       }
     }
-    console.log(arr);
+    console.log("price", arr);
     return arr.length < 5 ? arr : arr.slice(-5);
   };
 
@@ -45,7 +46,7 @@ function View({ cancel, products, product }) {
       }
     }
 
-    console.log(arr);
+    console.log("quantity", arr);
     return arr.length < 5 ? arr : arr.slice(-5);
   };
 
@@ -86,6 +87,13 @@ function View({ cancel, products, product }) {
         type: "line",
       },
     },
+    xAxis: {
+      categories: getDate(),
+    },
+    tooltip: {
+      headerFormat: "<b>{series.name}</b><br/>",
+      pointFormat: "{point.category}: {point.y}",
+    },
   };
   const options2 = {
     accessibility: {
@@ -94,20 +102,18 @@ function View({ cancel, products, product }) {
     title: {
       text: "Quantity History",
     },
-
-    chart: {
-      style: {
-        height: 200,
-        type: "line",
-      },
-    },
     series: [
       {
         name: "Quantity",
         data: getQuantity(),
       },
     ],
-
+    chart: {
+      style: {
+        height: 200,
+        type: "line",
+      },
+    },
     xAxis: {
       categories: getDate(),
     },
@@ -121,84 +127,84 @@ function View({ cancel, products, product }) {
     <>
       <div className="modal">
         <div className="view">
-          <h2>View</h2>
+          {/* <h2>View</h2> */}
 
-          <div className="form">
-            <div className="input">
-              {products.name === "tulips" && (
-                <img src={tulpe} alt="tulip"></img>
-              )}
-              {products.name === "rose" && <img src={rose} alt="rose"></img>}
-              {products.name === "snapdragon" && (
-                <img src={snapdragon} alt="snapdragon"></img>
-              )}
-              {products.name === "chrysanthemum" && (
-                <img src={chrysanthemum} alt="chrysanthemum"></img>
-              )}
-              {products.name === "geranium" && (
-                <img src={geranium} alt="geranium"></img>
-              )}
-              {products.name === "sunflower" && (
-                <img src={sunflower} alt="sunflower"></img>
-              )}
-              {products.name === "petunia" && (
-                <img src={petunia} alt="petunia"></img>
-              )}
-              <label> EAN: {products.EAN}</label>
-              <label>
-                Name:
-                <span
-                  style={{
-                    textTransform: "capitalize",
-                    fontWeight: "BOLDER",
-                    fontSize: "30px",
-                  }}
-                >
-                  {" "}
-                  {products.name}
-                </span>
-              </label>
-              {products.type ? (
-                <label> Type: {products.type}</label>
-              ) : (
-                <div>
-                  {" "}
-                  Type{" "}
-                  <span style={{ opacity: "0.5" }}>
-                    Nothing is registered
-                  </span>{" "}
-                </div>
-              )}
-              {products.weight ? (
-                <label> Weigth: {products.weight} grames</label>
-              ) : (
-                <div>
-                  {" "}
-                  Weigth{" "}
-                  <span style={{ opacity: "0.5" }}>
-                    Nothing is registered
-                  </span>{" "}
-                </div>
-              )}
-              <div className="graf">
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={options}
-                ></HighchartsReact>
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={options2}
-                ></HighchartsReact>
+          {/* <div className="form">
+            <div className="input"> */}
+          {products.name === "tulips" && <img src={tulpe} alt="tulip"></img>}
+          {products.name === "rose" && <img src={rose} alt="rose"></img>}
+          {products.name === "snapdragon" && (
+            <img src={snapdragon} alt="snapdragon"></img>
+          )}
+          {products.name === "chrysanthemum" && (
+            <img src={chrysanthemum} alt="chrysanthemum"></img>
+          )}
+          {products.name === "geranium" && (
+            <img src={geranium} alt="geranium"></img>
+          )}
+          {products.name === "sunflower" && (
+            <img src={sunflower} alt="sunflower"></img>
+          )}
+          {products.name === "petunia" && (
+            <img src={petunia} alt="petunia"></img>
+          )}
+
+          <div className="view-description">
+            <label> EAN: {products.EAN}</label>
+            <label>
+              <span
+                style={{
+                  textTransform: "capitalize",
+                  fontWeight: "BOLDER",
+                  fontSize: "30px",
+                }}
+              >
+                {" "}
+                {products.name}
+              </span>
+            </label>
+            {products.type ? (
+              <label> Type: {products.type}</label>
+            ) : (
+              <div>
+                {" "}
+                Type{" "}
+                <span style={{ opacity: "0.5" }}>
+                  Nothing is registered
+                </span>{" "}
               </div>
-              <div className="buttons">
-                <button className="viewB" onClick={handleCancel}>
-                  Cancel
-                </button>
+            )}
+            {products.weight ? (
+              <label> Weigth: {products.weight} grames</label>
+            ) : (
+              <div>
+                {" "}
+                Weigth{" "}
+                <span style={{ opacity: "0.5" }}>
+                  Nothing is registered
+                </span>{" "}
               </div>
-            </div>
+            )}
+          </div>
+          <div className="graf">
+            <HighchartsReact
+              highcharts={Highcharts}
+              options={options}
+            ></HighchartsReact>
+            <HighchartsReact
+              highcharts={Highcharts}
+              options={options2}
+            ></HighchartsReact>
+          </div>
+          <div className="buttons">
+            <button className="viewB" onClick={handleCancel}>
+              Cancel
+            </button>
           </div>
         </div>
       </div>
+      {/* </div>
+      </div> */}
     </>
   );
 }

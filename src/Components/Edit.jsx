@@ -8,7 +8,7 @@ function Edit({ edit, product, cancel, products }) {
   const [weight, setWeight] = useState("");
   const [color, setColor] = useState("");
   const [isActive, setIsActive] = useState(0);
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [date, setDate] = useState("");
 
@@ -41,7 +41,7 @@ function Edit({ edit, product, cancel, products }) {
       quantity: quantity,
       date: new Date().toLocaleString(),
     };
-    // console.log(date);
+    console.log(date);
     edit(data);
     setName("");
     setEAN("");
@@ -50,8 +50,10 @@ function Edit({ edit, product, cancel, products }) {
     setIsActive(0);
     setWeight("");
     setPrice([]);
-    setDate("");
     setQuantity([]);
+    setDate("");
+    console.log("price", price);
+    console.log("quan", quantity);
   };
 
   const handleInput = (e, d) => {
@@ -73,7 +75,6 @@ function Edit({ edit, product, cancel, products }) {
         break;
       case "price":
         setPrice(e.target.value);
-
         break;
       case "quantity":
         setQuantity(e.target.value);
@@ -117,13 +118,13 @@ function Edit({ edit, product, cancel, products }) {
                 <option value="all season">All season</option>
                 <option value="summer">Summer</option>
               </select>
-              <label> Weigth</label>
+              <label>Weigth</label>
               <input
                 type="text"
                 value={weight}
                 onChange={(e) => handleInput(e, "weight")}
               />
-              <label> Price</label>
+              <label>Price</label>
               <input
                 type="text"
                 value={price}
