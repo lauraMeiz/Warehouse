@@ -6,8 +6,8 @@ function Home() {
     <>
       <div className="foto-row">
         <img src={chrysanthemum} alt="chrysanthemum" />
-        <img src={rose} alt="rose" />
         <img src={sunflower} alt="sunflower" />
+        <img src={rose} alt="rose" />
       </div>
     </>
   );
