@@ -346,9 +346,10 @@
 .read-all {
   background-color: #f1f5f8;
   width: 1200px;
-  margin: 0 calc(50% - 600px);
+  margin: 25px calc(50% - 600px);
   border: 1px solid rgb(66, 60, 102);
   box-shadow: 2px 5px 5px grey;
+
   @media (max-width: 1500px) {
     width: 1100px;
     margin-left: calc(50% - 550px);
