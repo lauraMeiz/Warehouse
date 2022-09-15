@@ -13,7 +13,7 @@ function Read({ products, deleteA, show, getView }) {
           <li>Weight</li>
           <li>Price</li>
           <li>Quantity</li>
-          <li>Active</li>
+          <li>Do it Active!</li>
           {/* <div className="active"></div> */}
         </div>
         <div className="read">
