@@ -155,13 +155,13 @@ function App() {
                 textAlign: "center",
                 marginLeft: "20px",
               }}
-              to="/"
+              to="/Warehouse"
             >
               HOME
             </Link>
           </div>
           <Routes>
-            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/Warehouse" element={<Home></Home>}></Route>
 
             <Route
               path="/registration"
