@@ -200,13 +200,13 @@ function View({ cancel, products, product }) {
               options={options2}
             ></HighchartsReact>
           </div>
-          {/* <div className="buttons"> */}
-          <button className="cancelB" onClick={handleCancel}>
-            Cancel
-          </button>
+          <div className="buttons">
+            <button className="cancelB" onClick={handleCancel}>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
-      {/* </div> */}
       {/* </div>
       </div> */}
     </>
