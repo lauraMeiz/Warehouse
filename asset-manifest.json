@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Warehouse/static/css/main.80812ddf.css",
-    "main.js": "/Warehouse/static/js/main.2ff45861.js",
+    "main.css": "/Warehouse/static/css/main.9045fbf0.css",
+    "main.js": "/Warehouse/static/js/main.8af75885.js",
     "static/js/787.231a8822.chunk.js": "/Warehouse/static/js/787.231a8822.chunk.js",
     "static/media/tulip.jpg": "/Warehouse/static/media/tulip.e50123473c272776aa29.jpg",
     "static/media/background2.jpg": "/Warehouse/static/media/background2.e92e0366ca5e45f5290f.jpg",
@@ -10,12 +10,12 @@
     "static/media/rose.jpg": "/Warehouse/static/media/rose.e0e898a0728fd80b7a1f.jpg",
     "static/media/sunflower.jpg": "/Warehouse/static/media/sunflower.697746eb0043c766eb46.jpg",
     "index.html": "/Warehouse/index.html",
-    "main.80812ddf.css.map": "/Warehouse/static/css/main.80812ddf.css.map",
-    "main.2ff45861.js.map": "/Warehouse/static/js/main.2ff45861.js.map",
+    "main.9045fbf0.css.map": "/Warehouse/static/css/main.9045fbf0.css.map",
+    "main.8af75885.js.map": "/Warehouse/static/js/main.8af75885.js.map",
     "787.231a8822.chunk.js.map": "/Warehouse/static/js/787.231a8822.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.80812ddf.css",
-    "static/js/main.2ff45861.js"
+    "static/css/main.9045fbf0.css",
+    "static/js/main.8af75885.js"
   ]
 }
